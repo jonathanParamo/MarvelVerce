@@ -1,20 +1,24 @@
-import { useEffect, useState } from 'react'
+'use client'
+
+import { useState, useEffect } from 'react'
 import { useSnackbar } from 'notistack'
 import CardCharacter from '../../components/CardCharacter'
 import { Pagination } from '@nextui-org/react'
 import LoadingSpinner from '../../components/Loader'
 import { fetchData } from '../../api/fetchData'
+import { useRouter } from 'next/navigation'
 
 const MarvelCharacters = () => {
   const [characters, setCharacters] = useState([])
   const { enqueueSnackbar } = useSnackbar()
   const totalCharacters = 100
   const itemsPerPage = 20
-
+  const route = useRouter()
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+
     fetchData()
       .then((data) => {
         setCharacters(data)
@@ -46,15 +50,25 @@ const MarvelCharacters = () => {
         ) : (
           <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 place-items-center'>
             {getCharactersForPage(currentPage).map(({ name, thumbnail, id }) => (
-              <div key={id} className='p-4 rounded-lg shadow-md'>
-                <CardCharacter
+              <li
+                key={id}
+                onClick={() => route.push(`/Characters/${id}`)}
+                className='list-none'
+              >
+                <div
                   key={id}
-                  id={id}
-                  name={name}
-                  thumbnail={`${thumbnail.path}.${thumbnail.extension}`}
-                />
-              </div>
+                  className='p-4 rounded-lg shadow-md'
+                >
+                  <CardCharacter
+                    key={id}
+                    id={id}
+                    name={name}
+                    thumbnail={`${thumbnail.path}.${thumbnail.extension}`}
+                  />
+                </div>
+              </li>
             ))}
+
           </div>
         )}
       </div>

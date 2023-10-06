@@ -22,7 +22,7 @@ const makeRequest = async (url) => {
   try {
     const response = await fetch(url)
     if (!response.ok) {
-      throw new Error('No se pudo obtener la respuesta correcta de la API')
+      throw new Error('The correct response could not be obtained from the API.')
     }
     return await response.json()
   } catch (error) {
@@ -50,7 +50,29 @@ export async function fetchCharacterById(characterId) {
   try {
     const response = await fetch(apiUrl)
     if (!response.ok) {
-      throw new Error('No se pudo obtener la respuesta correcta de la API')
+      throw new Error('The correct response could not be obtained from the API.')
+    }
+
+    const data = await response.json()
+    return data.data.results[0]
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function fetchCharacterComics(characterId) {
+  const md5 = MD5
+  const ts = new Date().getTime().toString()
+  const hash = md5(ts + privateKey + publicKey)
+  const baseUrl = `${apiServer}/v1/public/characters/${characterId}/comics`
+  const queryParams = `?apikey=${publicKey}&ts=${ts}&hash=${hash}`
+
+  const apiUrl = baseUrl + queryParams
+
+  try {
+    const response = await fetch(apiUrl)
+    if (!response.ok) {
+      throw new Error('The correct response could not be obtained from the API.')
     }
 
     const data = await response.json()
