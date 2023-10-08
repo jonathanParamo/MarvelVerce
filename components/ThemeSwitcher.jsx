@@ -12,8 +12,8 @@ export function ThemeSwitcher() {
   if (!mounted) return null
 
   return (
-    <div className='flex justify-end items-end w-full h-8'>
-      <span className='text-gray-500 mr-1'>Light</span>
+    <div className='flex justify-end items-center w-full h-8'>
+      <span className='text-black dark:text-white mr-1'>Light</span>
       <label
         className={`${
           theme === 'dark' ? 'bg-white' : 'bg-black'
@@ -27,7 +27,7 @@ export function ThemeSwitcher() {
             transition-transform ease-in-out duration-300`}
         ></div>
       </label>
-      <span className='text-gray-500 ml-1'>Dark</span>
+      <span className='text-black dark:text-white ml-1'>Dark</span>
     </div>
   )
 }
