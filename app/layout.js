@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <SnackbarProvider maxSnack={3}>
         <body className={`${inter.className}`}>
           <header className='flex justify-between items-center p-4 h-12'>
-            <h1 className='relative text-xs md:text-3xl font-extrabold rounded-lg'>
+            <h1 className='relative mt-2 text-xs md:text-2xl font-extrabold bg-red-700 text-white p-2 rounded-full font-bold'>
               MarvelVerce
             </h1>
           </header>
