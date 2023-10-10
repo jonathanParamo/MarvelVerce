@@ -2,11 +2,12 @@
 
 import React from 'react'
 import {
-  Navbar, NavbarBrand, NavbarContent, NavbarItem, Link,
+  Navbar, NavbarBrand, NavbarContent, NavbarItem,
   NavbarMenuToggle, NavbarMenuItem, NavbarMenu
 } from '@nextui-org/react'
 import { useState } from 'react'
 import { ThemeSwitcher } from './ThemeSwitcher'
+import Link from 'next/link'
 
 const links = [{
   id: 'efgh',

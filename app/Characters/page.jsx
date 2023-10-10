@@ -25,7 +25,7 @@ const MarvelCharacters = () => {
         setIsLoading(false)
       })
       .catch((error) => {
-        enqueueSnackbar('Error al obtener los personajes de Marvel:', error, { variant: 'error' })
+        enqueueSnackbar('Error retrieving the characters of Marvel:', error, { variant: 'error' })
       })
   }, [])
 
