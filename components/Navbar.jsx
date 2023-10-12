@@ -10,13 +10,17 @@ import { ThemeSwitcher } from './ThemeSwitcher'
 import Link from 'next/link'
 
 const links = [{
+  id: 'ugrt',
+  label: 'Home',
+  route: '/'
+}, {
   id: 'efgh',
   label: 'Comics',
   route: '/comics'
 },{
   id: 'abcd',
   label: 'Characters',
-  route: '/'
+  route: '/characters'
 }, {
   id: 'ijkl',
   label: 'Creator',
@@ -34,7 +38,6 @@ const links = [{
   label: 'Stores',
   route: '/stores'
 }]
-
 
 const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -64,7 +67,7 @@ const Menu = () => {
           </NavbarBrand>
           <NavbarContent className='hidden md:flex gap-4' justify='center'>
             {links.map(({ id, label, route }) => (
-              <NavbarItem isActive key={id}>
+              <NavbarItem isActive={id} key={id}>
                 <Link color='foreground' href={route} aria-current='page'>
                   {label}
                 </Link>

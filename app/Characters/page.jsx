@@ -43,7 +43,11 @@ const MarvelCharacters = () => {
 
   return (
     <div className='h-[calc(100vh-48px)] flex flex-col'>
-      <h1 className='text-4xl text-center'>Characters of Marvel</h1>
+      <h2 className='text-2xl md:text-3xl font-bold text-red-500
+        text-center h-12 flex justify-center items-center'
+      >
+        Characters of Marvel
+      </h2>
       <div className='flex-grow'>
         {isLoading ? (
           <LoadingSpinner />
