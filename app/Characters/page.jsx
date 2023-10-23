@@ -56,7 +56,7 @@ const MarvelCharacters = () => {
             {getCharactersForPage(currentPage).map(({ name, thumbnail, id }) => (
               <li
                 key={id}
-                onClick={() => route.push(`/Characters/${id}`)}
+                onClick={() => route.push(`/characters/${id}`)}
                 className='list-none'
               >
                 <div

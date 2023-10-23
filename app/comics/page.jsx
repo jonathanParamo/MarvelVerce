@@ -14,12 +14,10 @@ const Comics = () =>  {
   useEffect(() => {
     fetchComics()
       .then((data) => {
-        console.log(data)
         setComics(data)
         setIsLoading(false)
       })
       .catch((error) => {
-        console.log(error)
         enqueueSnackbar('Error retrieving the comics. of Marvel', error, { variant: 'error' })
       })
   }, [])
