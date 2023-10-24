@@ -25,7 +25,7 @@ const MarvelCharacters = () => {
         setIsLoading(false)
       })
       .catch((error) => {
-        enqueueSnackbar('Error al obtener los personajes de Marvel:', error, { variant: 'error' })
+        enqueueSnackbar('Error retrieving the characters of Marvel:', error, { variant: 'error' })
       })
   }, [])
 
@@ -43,7 +43,11 @@ const MarvelCharacters = () => {
 
   return (
     <div className='h-[calc(100vh-48px)] flex flex-col'>
-      <h1 className='text-4xl text-center'>Characters of Marvel</h1>
+      <h2 className='text-2xl md:text-3xl font-bold text-red-500
+        text-center h-12 flex justify-center items-center'
+      >
+        Characters of Marvel
+      </h2>
       <div className='flex-grow'>
         {isLoading ? (
           <LoadingSpinner />
@@ -52,7 +56,7 @@ const MarvelCharacters = () => {
             {getCharactersForPage(currentPage).map(({ name, thumbnail, id }) => (
               <li
                 key={id}
-                onClick={() => route.push(`/Characters/${id}`)}
+                onClick={() => route.push(`/characters/${id}`)}
                 className='list-none'
               >
                 <div

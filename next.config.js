@@ -3,7 +3,8 @@ const nextConfig = {
   images: {
     domains: ['image.shutterstock.com',
       'mecaluxes.cdnwm.com',
-      'i.annihil.us'
+      'i.annihil.us',
+      'areajugones.sport.es'
     ]
   },
   experimental: {
