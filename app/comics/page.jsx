@@ -5,11 +5,13 @@ import { useSnackbar } from 'notistack'
 import LoadingSpinner from '../../components/Loader'
 import { fetchComics } from '../../api/fetchComics'
 import CardCharacter from '../../components/CardCharacter'
+import { useRouter } from 'next/navigation'
 
 const Comics = () =>  {
   const [comics, setComics] = useState([])
   const { enqueueSnackbar } = useSnackbar()
   const [isLoading, setIsLoading] = useState(true)
+  const route = useRouter()
 
   useEffect(() => {
     fetchComics()
@@ -37,7 +39,10 @@ const Comics = () =>  {
       </h2>
       <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center'>
         {hasData && comics.map(({ id, thumbnail, variants }) => (
-          <div key={id}>
+          <div
+            key={id}
+            onClick={() => route.push(`/comics/${id}`)}
+          >
             <CardCharacter
               key={id}
               id={id}

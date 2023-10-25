@@ -37,3 +37,10 @@ export async function fetchComics() {
   const apiUrl = `${baseUrl}${commonParams}&limit=${totalComics}`
   return makeRequest(apiUrl).then(({ data }) => data.results)
 }
+
+export async function fetchComic(comicId) {
+  const baseUrl = `${apiServer}/v1/public/comics/${comicId}?apikey=${publicKey}`;
+  const commonParams = buildCommonParams();
+  const apiUrl = `${baseUrl}${commonParams}`;
+  return makeRequest(apiUrl).then(({ data }) => data.results[0]);
+}
